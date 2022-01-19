@@ -45,8 +45,8 @@ def main_logger():
         with open(f"/sd/data-log-{init_time}.txt", "a") as appendfile:
             while True:
                 led.value = True
-                data = [time() - init_time, bme280.altitude]
-                appendfile.write(str(data))
+                data = [time() - init_time, round(bme280.altitude, 2)]
+                appendfile.write('\t'.join(data))
                 led.value = False
     except:
         while True:
